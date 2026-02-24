@@ -286,14 +286,22 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 }
 .card-placeholder{
   position:absolute;
-  width:24px;
-  height:24px;
-  border:2px solid #A07CDC;
-  border-top-color:transparent;
-  border-radius:50%;
-  animation:spin 0.8s linear infinite;
+  display:flex;
+  gap:3px;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
+.card-placeholder::before,
+.card-placeholder::after,
+.card-placeholder span{
+  content:'';
+  display:block;
+  width:6px;
+  height:6px;
+  background:#A07CDC;
+}
+.card-placeholder::before{animation:pixelpulse 1s step-end infinite 0s}
+.card-placeholder span{animation:pixelpulse 1s step-end infinite 0.33s}
+.card-placeholder::after{animation:pixelpulse 1s step-end infinite 0.66s}
+@keyframes pixelpulse{0%,100%{opacity:1}50%{opacity:0.15}}
 .card-info{padding:6px;flex:1}
 .card-name{font-size:7px;color:#FFFFFF;margin-bottom:3px}
 .card-species{font-size:6px;color:#A07CDC;margin-bottom:2px}
@@ -625,7 +633,7 @@ const SPECIES_DESC={"Spectrum":"Spectrum looms with a formidable presence, its h
       card.innerHTML=
         '<div class="card-inner">'+
           '<div class="card-img-wrap">'+
-            '<span class="card-placeholder"></span>'+
+            '<span class="card-placeholder"><span></span></span>'+
           '</div>'+
           '<div class="card-info">'+
             '<div class="card-name">'+u.name+'</div>'+
