@@ -96,10 +96,44 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   line-height:2;
   color:#A07CDC;
   text-transform:none;
+  display:flex;
+  gap:14px;
+  align-items:stretch;
 }
-.description p{margin-bottom:8px}
-.description p:last-child{margin-bottom:0}
+.desc-left{
+  flex:0 0 150px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.desc-left img{
+  width:100%;
+  height:auto;
+  display:block;
+  image-rendering:pixelated;
+  transition:opacity 0.4s ease;
+}
+.desc-left .desc-umwelt-name{
+  font-size:5px;
+  color:#A07CDC;
+  margin-top:4px;
+  text-align:center;
+  text-transform:uppercase;
+}
+.desc-right{
+  flex:1;
+  min-width:0;
+}
+.desc-right p{margin-bottom:8px}
+.desc-right p:last-child{margin-bottom:0}
 .description em{color:#FFFFFF;font-style:normal}
+@media(max-width:500px){
+  .description{flex-direction:column}
+  .desc-left{flex:0 0 auto;max-width:120px;margin:0 auto 8px}
+}
 
 /* TABS */
 .tabs{
@@ -454,10 +488,16 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 
 <!-- DESCRIPTION -->
 <div class="description">
+<div class="desc-left">
+<img id="descRandomImg" src="" alt="" loading="eager">
+<div class="desc-umwelt-name" id="descRandomName"></div>
+</div>
+<div class="desc-right">
 <p><em>Umwelt</em> &#8212; from the German, meaning &#8220;environment&#8221; &#8212; was coined by biologist <a href="https://www.edge.org/response-detail/11498" target="_blank" rel="noopener" class="highlight">Jakob von Uexk&#252;ll</a> to describe the unique subjective world each organism inhabits. No two species perceive the same reality.</p>
 <p>Umwelt AI is a collection of 512 tech-organic species generated through artificial intelligence and inscribed permanently on the Bitcoin blockchain via the Ordinals protocol. Each creature is a hybrid of deep-sea biology and computer hardware: GPUs, cooling fans, transparent cases, fused into forms that have never existed and could not exist outside this moment.</p>
 <p>They live at inscription numbers 45,000 to 47,000. There are now millions. Find them if you dig deep enough.</p>
 <p><a href="https://linktr.ee/far2far" target="_blank" rel="noopener">&gt; LEARN MORE ABOUT FAR'S WORK</a></p>
+</div>
 </div>
 
 <!-- TABS -->
@@ -516,8 +556,6 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 <p>Do we evolve as technology does, or does technology evolve as we do? This is an eternal question. Umwelt AI does not answer it. It inhabits it. The 512 species are created by intermixing two ecosystems: deep-sea creatures and hardware devices &#8212; GPUs, RAM, memories, computer components. They are neither fully biological nor fully mechanical. They are what emerges when one system starts dreaming about the other.</p>
 <h3>THE METHOD</h3>
 <p>The images of Umwelt AI were generated using a mix of available models for image creation: Stable Diffusion, Midjourney, DALL-E, and others, dating from 2022 and early 2023. They were not created with a single-shot prompt, but instead manipulated, sent back and forth between models, and reworked through multiple iterations. They were then inscribed directly onto individual satoshis on the Bitcoin blockchain using the Ordinals protocol: 30 MB of data, permanently carved into the earliest layer of a new medium, becoming one of the earliest (if not the earliest) fully on-chain AI art collections. The choice of Bitcoin was not incidental. It is proof-of-work, an energy-hungry system not unlike the GPU farms that trained the models that made the images. The creatures carry that cost in their bodies, and they are sitting there, in every Bitcoin node running the most decentralized network in existence.</p>
-<h3>THE CONTEXT</h3>
-<p>Umwelt AI shares lineage with Pierre Huyghe&#8217;s Uumwelt (Serpentine Galleries, 2018), where AI-generated imagery was fed into a living ecosystem, blurring the boundary between biological and computational processes. Where Huyghe worked with a physical space, this project works with a ledger, replacing the gallery wall with the blockchain as the site of permanence. Future researchers doing archaeology on early Bitcoin inscriptions will find these species dated to 2023: the year Ordinals appeared, the year AI image generation became ordinary, the year this particular symbiosis was still strange enough to be worth making.</p>
 <p class="credit">By FAR.</p>
 </div>
 </div>
@@ -744,6 +782,23 @@ const SPECIES_DESC={"Spectrum":"Spectrum looms with a formidable presence, its h
   searchEl.addEventListener('input',render);
   filterEl.addEventListener('change',render);
   sortEl.addEventListener('change',render);
+
+  /* Random Umwelt in description */
+  var descImg=document.getElementById('descRandomImg');
+  var descName=document.getElementById('descRandomName');
+  function showRandomUmwelt(){
+    var idx=Math.floor(Math.random()*data.length);
+    var u=data[idx];
+    descImg.style.opacity='0';
+    setTimeout(function(){
+      descImg.src=u.content_url;
+      descImg.alt=u.name;
+      descName.textContent=u.name;
+      descImg.onload=function(){descImg.style.opacity='1';};
+    },400);
+  }
+  showRandomUmwelt();
+  setInterval(showRandomUmwelt,10000);
 
   render();
 })();
