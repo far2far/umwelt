@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>UMWELT AI — LIVING SPECIES ON BITCOIN BY FAR</title>
 <meta name="description" content="UMWELT AI - LIVING SPECIES ON BITCOIN BY FAR">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https://ordinals.com data:; frame-ancestors 'none'; base-uri 'none'; form-action 'none';">
@@ -37,7 +37,7 @@ body::after{
 }
 ::selection{background:#A07CDC;color:#000000}
 a{color:#A07CDC;text-decoration:none}
-a:hover{color:#FFFFFF}
+@media(hover:hover){a:hover{color:#FFFFFF}}
 a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 
 /* LAYOUT */
@@ -57,7 +57,7 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   font-size:7px;
   color:#A07CDC;
 }
-.header-link:hover{color:#FFFFFF}
+@media(hover:hover){.header-link:hover{color:#FFFFFF}}
 .header-logo{
   display:block;
   max-width:320px;
@@ -154,18 +154,6 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   );
   pointer-events:none;
 }
-.desc-left .desc-umwelt-name{
-  font-size:5px;
-  color:#A07CDC;
-  margin-top:4px;
-  text-align:center;
-  text-transform:uppercase;
-}
-.desc-divider{
-  width:1px;
-  background:#A07CDC;
-  align-self:stretch;
-}
 .desc-right{
   flex:1;
   min-width:0;
@@ -177,7 +165,6 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:500px){
   .description{flex-direction:column}
   .desc-left{flex:0 0 auto;max-width:120px;margin:0 auto 8px}
-  .desc-divider{width:100%;height:1px;align-self:auto}
   .desc-right{padding-left:0}
 }
 
@@ -198,7 +185,7 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   padding:6px 10px;
   cursor:pointer;
 }
-.tab-btn:hover{color:#FFFFFF;border-color:#FFFFFF}
+@media(hover:hover){.tab-btn:hover{color:#FFFFFF;border-color:#FFFFFF}}
 .tab-btn.active{color:#C9B1FF;border-color:#C9B1FF;background:#111}
 .tab-panel{
   display:none;
@@ -272,11 +259,6 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   gap:8px;
 }
 
-@media(max-width:600px){
-  .controls{flex-direction:column}
-  .control-group{flex:unset;width:100%}
-  .count-display{margin-left:0}
-}
 
 
 /* SIZE CONTROLS */
@@ -297,7 +279,7 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   padding:4px 6px;
   cursor:pointer;
 }
-.size-btn:hover{color:#FFFFFF;border-color:#FFFFFF}
+@media(hover:hover){.size-btn:hover{color:#FFFFFF;border-color:#FFFFFF}}
 .size-btn.active{color:#FFFFFF;border-color:#FFFFFF}
 .grid.size-s{grid-template-columns:repeat(auto-fill,minmax(55px,1fr));gap:4px}
 .grid.size-m{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
@@ -351,7 +333,7 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   display:flex;
   flex-direction:column;
 }
-.card:hover .card-inner{border-color:#FFFFFF}
+@media(hover:hover){.card:hover .card-inner{border-color:#FFFFFF}}
 .card-img-wrap{
   width:100%;
   aspect-ratio:1/1;
@@ -426,7 +408,8 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   z-index:1;
   text-transform:uppercase;
 }
-.modal-close:hover{color:#FFFFFF}
+.close-mobile{display:none}
+@media(hover:hover){.modal-close:hover{color:#FFFFFF}}
 .modal-img{
   width:100%;
   aspect-ratio:1/1;
@@ -467,7 +450,7 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   text-transform:uppercase;
   padding:5px 0;
 }
-.modal-actions a:hover{color:#A07CDC}
+@media(hover:hover){.modal-actions a:hover{color:#A07CDC}}
 
 
 /* SPECIES GUIDE */
@@ -500,7 +483,7 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 }
 .guide-count{color:#A07CDC;font-size:6px}
 .guide-entry{cursor:pointer}
-.guide-entry:hover{background:#111}
+@media(hover:hover){.guide-entry:hover{background:#111}}
 .guide-view{
   display:inline-block;
   margin-top:4px;
@@ -522,6 +505,50 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   font-size:6px;
   text-align:center;
   color:#A07CDC;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .container{padding:8px}
+  .header-link{position:static;display:block;margin-top:6px}
+  .header-logo{max-width:100%}
+  .header-title{font-size:12px}
+  .controls{flex-direction:column}
+  .control-group{flex:unset;width:100%}
+  .count-display{margin-left:0}
+  .header-sub{font-size:8px}
+  .rule{font-size:7px}
+  .description{font-size:8px;padding:8px}
+  .tab-btn{padding:10px 12px;font-size:8px;flex:1;text-align:center}
+  .tab-content{font-size:8px}
+  .tab-content h3{font-size:9px}
+  .tab-content .credit{font-size:7px}
+  .control-group label{font-size:7px}
+  .control-group input,
+  .control-group select{font-size:16px;padding:10px 8px}
+  .control-group select option{font-size:14px;padding:6px 8px}
+  .count-display{font-size:7px}
+  .size-controls label{font-size:7px}
+  .size-btn{padding:8px 10px;font-size:8px}
+  .progress-label{font-size:7px}
+  .progress-bar{height:8px}
+  .card-name{font-size:8px}
+  .card-species,.card-inscription{font-size:7px}
+  .modal-overlay{padding:8px}
+  .modal{max-height:95vh}
+  .modal-close{font-size:8px;padding:10px 12px;top:4px;right:4px}
+  .close-desktop{display:none}
+  .close-mobile{display:inline}
+  .modal-meta{font-size:8px}
+  .modal-species-desc{font-size:7px}
+  .modal-actions a{font-size:8px;padding:10px 0}
+  .guide-info h3{font-size:8px}
+  .guide-info p{font-size:7px}
+  .guide-count{font-size:7px}
+  .guide-view{font-size:7px}
+  .footer{font-size:7px}
+  .grid.size-m{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .grid.size-l{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
 }
 </style>
 </head>
@@ -622,7 +649,7 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 <!-- MODAL -->
 <div class="modal-overlay" id="modal">
 <div class="modal">
-<button class="modal-close" id="modalClose">[ESC] CLOSE</button>
+<button class="modal-close" id="modalClose"><span class="close-desktop">[ESC] </span><span class="close-mobile">[X] </span>CLOSE</button>
 <div class="modal-img" id="modalImg"></div>
 <div class="modal-meta" id="modalMeta"></div>
 <div class="modal-actions" id="modalActions"></div>
