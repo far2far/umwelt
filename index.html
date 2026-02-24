@@ -522,7 +522,6 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 <div class="desc-left-img-wrap">
 <img id="descRandomImg" src="" alt="" loading="eager">
 </div>
-<div class="desc-umwelt-name" id="descRandomName"></div>
 </div>
 <div class="desc-right">
 <p><em>Umwelt</em> &#8212; from the German, meaning &#8220;environment&#8221; &#8212; was coined by biologist <a href="https://www.edge.org/response-detail/11498" target="_blank" rel="noopener" class="highlight">Jakob von Uexk&#252;ll</a> to describe the unique subjective world each organism inhabits. No two species perceive the same reality.</p>
@@ -817,7 +816,6 @@ const SPECIES_DESC={"Spectrum":"Spectrum looms with a formidable presence, its h
 
   /* Random Umwelt in description */
   var descImg=document.getElementById('descRandomImg');
-  var descName=document.getElementById('descRandomName');
   function showRandomUmwelt(){
     var idx=Math.floor(Math.random()*UMWELTS.length);
     var u=UMWELTS[idx];
@@ -825,7 +823,6 @@ const SPECIES_DESC={"Spectrum":"Spectrum looms with a formidable presence, its h
     setTimeout(function(){
       descImg.src=u.content_url;
       descImg.alt=u.name;
-      descName.textContent=u.name;
       descImg.onload=function(){descImg.style.opacity='1';};
     },400);
   }
