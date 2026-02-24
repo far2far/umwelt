@@ -85,7 +85,9 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   overflow:hidden;
   white-space:nowrap;
   user-select:none;
+  width:100%;
 }
+
 
 /* DESCRIPTION */
 .description{
@@ -109,12 +111,31 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   position:relative;
   overflow:hidden;
 }
-.desc-left img{
+.desc-left-img-wrap{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+}
+.desc-left-img-wrap img{
   width:100%;
   height:auto;
   display:block;
   image-rendering:pixelated;
   transition:opacity 0.4s ease;
+  filter:grayscale(0.3) sepia(0.5) hue-rotate(220deg) saturate(1.8) brightness(0.85);
+}
+.desc-left-img-wrap::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.15) 2px,
+    rgba(0,0,0,0.15) 4px
+  );
+  pointer-events:none;
 }
 .desc-left .desc-umwelt-name{
   font-size:5px;
@@ -123,9 +144,15 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   text-align:center;
   text-transform:uppercase;
 }
+.desc-divider{
+  width:1px;
+  background:#A07CDC;
+  align-self:stretch;
+}
 .desc-right{
   flex:1;
   min-width:0;
+  padding-left:10px;
 }
 .desc-right p{margin-bottom:8px}
 .desc-right p:last-child{margin-bottom:0}
@@ -133,6 +160,8 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:500px){
   .description{flex-direction:column}
   .desc-left{flex:0 0 auto;max-width:120px;margin:0 auto 8px}
+  .desc-divider{width:100%;height:1px;align-self:auto}
+  .desc-right{padding-left:0}
 }
 
 /* TABS */
@@ -184,6 +213,7 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
   display:flex;
   flex-wrap:wrap;
   gap:8px;
+  margin-top:4px;
   margin-bottom:12px;
   align-items:flex-end;
 }
@@ -489,9 +519,12 @@ a.highlight{color:#C9B1FF;text-decoration:underline;text-underline-offset:3px}
 <!-- DESCRIPTION -->
 <div class="description">
 <div class="desc-left">
+<div class="desc-left-img-wrap">
 <img id="descRandomImg" src="" alt="" loading="eager">
+</div>
 <div class="desc-umwelt-name" id="descRandomName"></div>
 </div>
+<div class="desc-divider"></div>
 <div class="desc-right">
 <p><em>Umwelt</em> &#8212; from the German, meaning &#8220;environment&#8221; &#8212; was coined by biologist <a href="https://www.edge.org/response-detail/11498" target="_blank" rel="noopener" class="highlight">Jakob von Uexk&#252;ll</a> to describe the unique subjective world each organism inhabits. No two species perceive the same reality.</p>
 <p>Umwelt AI is a collection of 512 tech-organic species generated through artificial intelligence and inscribed permanently on the Bitcoin blockchain via the Ordinals protocol. Each creature is a hybrid of deep-sea biology and computer hardware: GPUs, cooling fans, transparent cases, fused into forms that have never existed and could not exist outside this moment.</p>
