@@ -1,5 +1,7 @@
 .DS_Store
 *.xlsx
 *.pdf
+umwelts.json
 node_modules/
 .vercel/
+.vercel
