@@ -820,8 +820,8 @@ const SPECIES_DESC={"Spectrum":"Spectrum looms with a formidable presence, its h
   var descImg=document.getElementById('descRandomImg');
   var descName=document.getElementById('descRandomName');
   function showRandomUmwelt(){
-    var idx=Math.floor(Math.random()*data.length);
-    var u=data[idx];
+    var idx=Math.floor(Math.random()*UMWELTS.length);
+    var u=UMWELTS[idx];
     descImg.style.opacity='0';
     setTimeout(function(){
       descImg.src=u.content_url;
